@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>جبس بورد وتشطيبات جدة | ديكور احترافي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #C8922A;
+      --gold-lt: #E8B84B;
+      --cream:   #FAF6EF;
+      --sand:    #EDE4D4;
+      --charcoal:#1C1C1E;
+      --text:    #3A3530;
+      --muted:   #7A6E64;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--charcoal);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(28,28,30,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,146,42,0.25);
+      padding: 14px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 44px; height: 44px; background: var(--gold);
+      border-radius: 8px; display: grid; place-items: center;
+      font-size: 22px;
+    }
+    .logo-text { color: var(--white); }
+    .logo-text h1 { font-size: 1rem; font-weight: 700; line-height: 1.1; }
+    .logo-text span { font-size: 0.72rem; color: var(--gold-lt); }
+
+    nav a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      margin-right: 22px; font-size: 0.88rem; font-weight: 600;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--gold-lt); }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 6px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── MOBILE MENU ─── */
+    .mobile-menu {
+      position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
+      background: rgba(20,20,22,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,146,42,0.25);
+      padding: 0 6%;
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+    }
+    .mobile-menu.open {
+      max-height: 400px;
+      padding: 16px 6% 24px;
+    }
+    .mobile-menu a {
+      display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.82); text-decoration: none;
+      font-size: 1rem; font-weight: 600;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color .2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold-lt); }
+    .mobile-menu a .m-icon { font-size: 1.1rem; width: 22px; text-align: center; }
+    .mobile-menu .m-cta {
+      display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;
+    }
+    .mobile-menu .m-cta a {
+      border: none; padding: 11px 18px; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 700;
+    }
+    .mobile-menu .m-cta .mc-wa {
+      background: #25D366; color: var(--white);
+      flex: 1; justify-content: center;
+    }
+    .mobile-menu .m-cta .mc-call {
+      background: var(--gold); color: var(--charcoal);
+      flex: 1; justify-content: center;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(28,28,30,0.88) 45%, rgba(200,146,42,0.18) 100%),
+        url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80") center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 8% 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+      background: linear-gradient(to bottom, transparent, var(--charcoal));
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,146,42,0.18); border: 1px solid var(--gold);
+      color: var(--gold-lt); font-size: 0.8rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px; width: fit-content;
+    }
+    .hero-tag::before { content: '✦'; font-size: 10px; }
+
+    .hero h2 {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800; line-height: 1.2;
+      color: var(--white);
+      max-width: 680px;
+    }
+    .hero h2 em {
+      font-style: normal; color: var(--gold-lt);
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.65); font-size: 1.08rem;
+      margin: 22px 0 36px; max-width: 520px; line-height: 1.9;
+    }
+
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; position: relative; z-index:2; }
+
+    .btn-gold {
+      background: var(--gold); color: var(--charcoal);
+      padding: 14px 28px; border-radius: 8px; border: none;
+      font-family: 'Cairo', sans-serif; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: 14px 28px; border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      font-family: 'Cairo', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: border-color .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { border-color: var(--gold-lt); transform: translateY(-2px); }
+
+    .hero-stats {
+      position: relative; z-index: 2;
+      display: flex; gap: 40px; margin-top: 60px; flex-wrap: wrap;
+    }
+    .stat { border-right: 2px solid var(--gold); padding-right: 18px; }
+    .stat:last-child { border-right: none; }
+    .stat strong { display: block; font-size: 1.9rem; font-weight: 900; color: var(--white); }
+    .stat span { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+    /* ─── SECTION WRAPPER ─── */
+    section { padding: 90px 8%; }
+    .section-bg-light { background: var(--cream); }
+    .section-bg-sand  { background: var(--sand); }
+    .section-bg-dark  { background: var(--charcoal); }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.25;
+    }
+    .section-title.light { color: var(--white); }
+    .section-title.dark  { color: var(--charcoal); }
+    .divider-gold {
+      width: 56px; height: 3px; background: var(--gold);
+      border-radius: 2px; margin: 18px 0 30px;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 14px; padding: 30px 24px;
+      border: 1.5px solid transparent;
+      transition: border-color .25s, transform .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: right;
+      transition: transform .3s;
+    }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 12px 32px rgba(200,146,42,0.12); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 10px; }
+    .service-card p  { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+
+    /* ─── WHY US ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px; margin-top: 40px;
+    }
+    .why-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,146,42,0.2);
+      border-radius: 12px; padding: 26px 22px;
+      transition: background .2s;
+    }
+    .why-item:hover { background: rgba(200,146,42,0.07); }
+    .why-number {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 2rem; font-weight: 900; color: var(--gold);
+      margin-bottom: 6px; line-height: 1;
+    }
+    .why-item h4 { color: var(--white); font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .why-item p  { color: rgba(255,255,255,0.5); font-size: 0.82rem; line-height: 1.8; }
+
+    /* ─── PROCESS ─── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; margin-top: 40px; position: relative;
+    }
+    .step {
+      padding: 28px 24px; position: relative;
+      border-left: 2px solid var(--sand);
+      padding-right: 0;
+    }
+    .step:first-child { border-left: none; }
+    .step-num {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 3rem; font-weight: 900;
+      color: var(--gold); opacity: 0.35; line-height: 1;
+    }
+    .step h4 { font-size: 1rem; font-weight: 700; color: var(--charcoal); margin: 6px 0; }
+    .step p  { font-size: 0.83rem; color: var(--muted); line-height: 1.8; }
+
+
+
+    /* ─── CTA ─── */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, #1C1C1E 0%, #2a2218 100%);
+      padding: 80px 8%;
+    }
+    .cta-section .section-title { color: var(--white); margin-bottom: 16px; }
+    .cta-section p { color: rgba(255,255,255,0.6); margin-bottom: 36px; font-size: 1rem; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #111; color: rgba(255,255,255,0.5);
+      padding: 40px 8%; display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      font-size: 0.82rem;
+    }
+    footer .ft-logo { color: var(--gold-lt); font-weight: 700; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+    /* ─── FLOATING BUTTONS ─── */
+    .float-buttons {
+      position: fixed;
+      bottom: 28px; left: 22px;
+      display: flex; flex-direction: column; gap: 12px;
+      z-index: 999;
+    }
+
+    .float-btn {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+    }
+    .float-btn:hover { transform: scale(1.12); box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+    .float-btn.whatsapp { background: #25D366; }
+    .float-btn.call     { background: var(--gold); }
+
+    .float-btn svg { width: 24px; height: 24px; fill: white; }
+
+    .float-tooltip {
+      position: absolute; left: 62px;
+      background: rgba(28,28,30,0.9);
+      color: var(--white); font-size: 0.78rem; font-weight: 600;
+      padding: 5px 11px; border-radius: 6px;
+      white-space: nowrap; opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+    }
+    .float-btn:hover .float-tooltip { opacity: 1; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 22px; }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 60px 6%; }
+      .hero { padding: 100px 6% 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">🏛️</div>
+    <div class="logo-text">
+      <h1>جبس بورد وديكور</h1>
+      <span>تشطيبات احترافية — جدة</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#services">خدماتنا</a>
+    <a href="#why">لماذا نحن</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+  <button class="hamburger" id="menuBtn" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="menu-link"><span class="m-icon">🏗️</span> خدماتنا</a>
+  <a href="#why" class="menu-link"><span class="m-icon">⭐</span> لماذا نحن</a>
+  <a href="#contact" class="menu-link"><span class="m-icon">📞</span> تواصل معنا</a>
+  <div class="m-cta">
+    <a href="https://wa.me/966545260547" class="mc-wa">💬 واتساب</a>
+    <a href="tel:+966545260547" class="mc-call">📞 اتصل بنا</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">جدة | تشطيبات متكاملة</div>
+  <h2>جبس بورد و<em>ديكورات</em><br/>راقية بمعايير استثنائية</h2>
+  <p>نحن متخصصون في تشطيبات الجبس بورد، الإسمنت، الديكورات، وغرف السطح — نحوّل مساحتك إلى تحفة معمارية بأيدي حرفيين معتمدين في جدة.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/966545260547" class="btn-gold">💬 تواصل عبر واتساب</a>
+    <a href="tel:+966545260547" class="btn-outline">📞 اتصل بنا الآن</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><strong>+500</strong><span>مشروع منجز</span></div>
+    <div class="stat"><strong>+10</strong><span>سنوات خبرة</span></div>
+    <div class="stat"><strong>100%</strong><span>رضا العملاء</span></div>
+    <div class="stat"><strong>جدة</strong><span>وضواحيها</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section-bg-light">
+  <p class="section-label">تخصصاتنا</p>
+  <h2 class="section-title dark">خدماتنا المتكاملة</h2>
+  <div class="divider-gold"></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <h3>جبس بورد</h3>
+      <p>تركيب أسقف جبس بورد، جدران، قواطع داخلية بأعلى جودة مع الضمان الكامل على التنفيذ.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧱</div>
+      <h3>إسمنت وبياض</h3>
+      <p>أعمال البياض والمعالجة بالإسمنت للجدران والأسقف بمواصفات متينة وسطح ناعم مثالي.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>ديكورات تشطيب</h3>
+      <p>تصميم وتنفيذ ديكورات داخلية فاخرة — كورنيش، غرف معيشة، أسقف مضيئة وتصاميم عصرية.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>غرف السطح</h3>
+      <p>بناء وتشطيب غرف السطح بمواد عالية الجودة ومقاومة للعوامل الجوية في مناخ جدة.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>دهانات وطلاء</h3>
+      <p>تشطيبات الدهانات بأجود الأصباغ العالمية مع ضمان اللون والجودة لفترة طويلة.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>صيانة وترميم</h3>
+      <p>خدمات صيانة وإصلاح للمشاريع القائمة بسرعة وكفاءة دون إزعاج لسكان المكان.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="section-bg-dark">
+  <p class="section-label">ما يميزنا</p>
+  <h2 class="section-title light">لماذا تختارنا؟</h2>
+  <div class="divider-gold"></div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-number">01</div>
+      <h4>خبرة تتجاوز عقداً</h4>
+      <p>أكثر من 10 سنوات في السوق السعودي مع خبرة واسعة في مشاريع جدة الكبرى والصغيرة.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">02</div>
+      <h4>مواد معتمدة عالمياً</h4>
+      <p>نستخدم فقط مواد الجبس بورد والإسمنت المعتمدة من علامات تجارية موثوقة عالمياً.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">03</div>
+      <h4>فريق حرفيين متخصصين</h4>
+      <p>كادر مؤهل ومدرب على أعلى المستويات يلتزم بالدقة والنظافة طوال فترة التنفيذ.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">04</div>
+      <h4>ضمان شامل</h4>
+      <p>نقدم ضماناً كاملاً على جميع أعمالنا مع خدمة ما بعد التسليم لراحة بالك التامة.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">05</div>
+      <h4>أسعار تنافسية</h4>
+      <p>نوفر أفضل جودة بأسعار عادلة وشفافة دون تكاليف مخفية أو مفاجآت في الفاتورة.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">06</div>
+      <h4>التزام بالمواعيد</h4>
+      <p>نسلّم مشروعك في الموعد المحدد لأننا نحترم وقتك ونعرف قيمته.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-bg-sand">
+  <p class="section-label">طريقة عملنا</p>
+  <h2 class="section-title dark">مراحل تنفيذ مشروعك</h2>
+  <div class="divider-gold"></div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>التواصل والمعاينة</h4>
+      <p>نزور موقعك مجاناً لمعاينة المشروع وتحديد احتياجاتك بدقة.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>التصميم والعرض</h4>
+      <p>نقدم لك تصميماً مقترحاً وعرض سعر شفاف بدون التزامات.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>التنفيذ الاحترافي</h4>
+      <p>يبدأ فريقنا العمل بحرفية عالية مع متابعة يومية للتقدم.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>التسليم والضمان</h4>
+      <p>نسلّم مشروعك باحتراف ونمنحك ضماناً كاملاً على التنفيذ.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <p class="section-label">احجز الآن</p>
+  <h2 class="section-title">جاهزون لخدمتك في جدة</h2>
+  <div class="divider-gold" style="margin: 18px auto 22px;"></div>
+  <p>تواصل معنا اليوم لمعاينة مجانية وعرض سعر بدون التزام — فريقنا في خدمتك.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/966545260547" class="btn-gold">💬 واتساب — 0545260547</a>
+    <a href="tel:+966545260547" class="btn-outline">📞 اتصل بنا مباشرة</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-logo">🏛️ جبس بورد وديكور — جدة</span>
+  <span>📍 جدة، المملكة العربية السعودية</span>
+  <span><a href="tel:+966545260547">0545260547</a></span>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-buttons">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/966545260547" class="float-btn whatsapp" target="_blank" rel="noopener" aria-label="واتساب">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="float-tooltip">واتساب</span>
+  </a>
+  <!-- Call -->
+  <a href="tel:+966545260547" class="float-btn call" aria-label="اتصال">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/>
+    </svg>
+    <span class="float-tooltip">اتصال</span>
+  </a>
+</div>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
